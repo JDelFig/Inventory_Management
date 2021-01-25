@@ -28,9 +28,20 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>TestDB</display-name>
+		<servlet-name>TestDB</servlet-name>
+		<servlet-class>com.jdmj.InventoryManagement.TestDB.TestDB</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SpringDispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TestDB</servlet-name>
+		<url-pattern>/TestDB</url-pattern>
 	</servlet-mapping>
 
 	<session-config>
