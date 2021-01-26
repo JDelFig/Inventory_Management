@@ -1,12 +1,15 @@
 package com.jdmj.InventoryManagement.entity;
 
-import javax.persistence.CascadeType;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,6 +32,14 @@ public class Product {
 	@JoinColumn(name="product_info_id")
 	private ProductInfo productInfo;
 
+	@ManyToMany
+	@JoinTable(
+		name="supplier_product",
+		joinColumns=@JoinColumn(name="product_id"),
+		inverseJoinColumns = @JoinColumn(name="supplier_id")
+	)
+	private List<Supplier> suppliers;
+	
 	public Product() {
 
 	}
@@ -80,4 +91,12 @@ public class Product {
 		this.productInfo = productInfo;
 	}
 
+	public List<Supplier> getSuppliers() {
+		return suppliers;
+	}
+
+	public void setSuppliers(List<Supplier> suppliers) {
+		this.suppliers = suppliers;
+	}
+	
 }
